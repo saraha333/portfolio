@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>البورتفوليو الشخصي | ساره سالم الحليسي</title>
+    
+    <!-- 1. أيقونة التبويب العلوي (Favicon) - المرة الأولى -->
+    <link rel="icon" type="image/png" href="files/sarahlogo.png">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eaf4f4',
+                            100: '#cce9eb',
+                            200: '#9ed5d9',
+                            300: '#69b8bf',
+                            400: '#3eb8c3',
+                            500: '#239ca8', 
+                            600: '#1b7d88', 
+                            700: '#17656f',
+                            800: '#15535c',
+                            900: '#13444c',
+                            950: '#09252a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Tajawal', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts: Tajawal -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Tajawal', sans-serif; }
+        /* تثبيت ألوان حقول الإدخال */
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover, 
+        input:-webkit-autofill:focus, 
+        textarea:-webkit-autofill,
+        textarea:-webkit-autofill:hover,
+        textarea:-webkit-autofill:focus {
+            -webkit-box-shadow: 0 0 0px 1000px #eaf4f4 inset !important;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+        .dark input:-webkit-autofill,
+        .dark input:-webkit-autofill:hover,
+        .dark input:-webkit-autofill:focus,
+        .dark textarea:-webkit-autofill,
+        .dark textarea:-webkit-autofill:hover,
+        .dark textarea:-webkit-autofill:focus {
+            -webkit-box-shadow: 0 0 0px 1000px #09252a inset !important;
+            -webkit-text-fill-color: #fff !important;
+        }
+    </style>
+</head>
+<body class="bg-brand-50 text-brand-900 dark:bg-brand-950 dark:text-brand-100 transition-colors duration-300">
+
+    <!-- Navbar / القائمة العلوية -->
+    <nav class="fixed top-0 left-0 right-0 z-40 bg-brand-50/90 dark:bg-brand-950/90 backdrop-blur-md border-b border-brand-200 dark:border-brand-900 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                
+                <!-- 2. لوجو اسمك الشفاف بجانب العنوان العلوى - المرة الثانية -->
+                <a href="#about" class="flex items-center space-x-3 space-x-reverse text-base sm:text-lg font-bold text-brand-800 dark:text-brand-200">
+                    <img src="files/sarahlogo.png" alt="Sarah Logo" class="w-8 h-8 object-contain" onerror="this.src='files/logo.png'">
+                    <div>
+                        <span class="lang-ar">البورتفوليو | ساره الحليسي</span>
+                        <span class="lang-en hidden">Portfolio | Sarah Alhulaysi</span>
+                    </div>
+                </a>
+                
+                <!-- روابط التنقل العلوي -->
+                <div class="hidden md:flex items-center space-x-8 space-x-reverse text-brand-800 dark:text-brand-200">
+                    <a href="#about" class="hover:text-brand-600 dark:hover:text-brand-400 font-medium transition-colors">
+                        <span class="lang-ar">عني والتعليم</span>
+                        <span class="lang-en hidden">About & Education</span>
+                    </a>
+                    <a href="#skills" class="hover:text-brand-600 dark:hover:text-brand-400 font-medium transition-colors">
+                        <span class="lang-ar">المهارات</span>
+                        <span class="lang-en hidden">Skills</span>
+                    </a>
+                    <a href="#experiences" class="hover:text-brand-600 dark:hover:text-brand-400 font-medium transition-colors">
+                        <span class="lang-ar">الخبرات والمشاريع</span>
+                        <span class="lang-en hidden">Experiences & Projects</span>
+                    </a>
+                    <a href="#certificates" class="hover:text-brand-600 dark:hover:text-brand-400 font-medium transition-colors">
+                        <span class="lang-ar">الشهادات</span>
+                        <span class="lang-en hidden">Certificates</span>
+                    </a>
+                    <a href="#contact" class="hover:text-brand-600 dark:hover:text-brand-400 font-medium transition-colors">
+                        <span class="lang-ar">التواصل</span>
+                        <span class="lang-en hidden">Contact</span>
+                    </a>
+                </div>
+
+                <div class="flex items-center space-x-3 space-x-reverse">
+                    <!-- Language Switcher الثابت -->
+                    <button id="lang-toggle" class="w-10 h-8 flex items-center justify-center text-xs font-bold rounded-lg border border-brand-700 text-brand-800 dark:text-brand-200 dark:border-brand-500 hover:bg-brand-700 hover:text-white transition-all">
+                        EN
+                    </button>
+                    <!-- Dark/Light Mode Toggle -->
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-brand-200/50 dark:hover:bg-brand-900 transition-colors">
+                        <i id="theme-icon" class="fa-solid fa-moon text-lg text-brand-800 dark:text-brand-200"></i>
+                    </button>
+                    <!-- Mobile Menu Button -->
+                    <button id="menu-btn" class="md:hidden p-2 rounded-lg hover:bg-brand-200/50 dark:hover:bg-brand-900">
+                        <i class="fa-solid fa-bars text-xl text-brand-800 dark:text-brand-200"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-100 dark:bg-brand-950 border-b border-brand-200 dark:border-brand-900 px-4 pt-2 pb-4 space-y-2">
+            <a href="#about" class="block py-2 text-brand-900 dark:text-brand-100 hover:text-brand-600">
+                <span class="lang-ar">عني والتعليم</span>
+                <span class="lang-en hidden">About & Education</span>
+            </a>
+            <a href="#skills" class="block py-2 text-brand-900 dark:text-brand-100 hover:text-brand-600">
+                <span class="lang-ar">المهارات</span>
+                <span class="lang-en hidden">Skills</span>
+            </a>
+            <a href="#experiences" class="block py-2 text-brand-900 dark:text-brand-100 hover:text-brand-600">
+                <span class="lang-ar">الخبرات والمشاريع</span>
+                <span class="lang-en hidden">Experiences & Projects</span>
+            </a>
+            <a href="#certificates" class="block py-2 text-brand-900 dark:text-brand-100 hover:text-brand-600">
+                <span class="lang-ar">الشهادات</span>
+                <span class="lang-en hidden">Certificates</span>
+            </a>
+            <a href="#contact" class="block py-2 text-brand-900 dark:text-brand-100 hover:text-brand-600">
+                <span class="lang-ar">التواصل</span>
+                <span class="lang-en hidden">Contact</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- الصفحة الأولى: نبذة عني والتعليم -->
+    <section id="about" class="min-h-screen pt-28 pb-16 flex items-center justify-center px-4">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6 text-right">
+                <span class="inline-block px-3.5 py-1.5 bg-brand-200/70 dark:bg-brand-900/60 text-brand-900 dark:text-brand-200 rounded-full text-sm font-semibold">
+                    <span class="lang-ar">نظم معلومات الحاسوب الآلي</span>
+                    <span class="lang-en hidden">Computer Information Systems</span>
+                </span>
+                
+                <h1 class="text-3xl sm:text-4xl font-black tracking-tight leading-tight text-brand-950 dark:text-white">
+                    <span class="lang-ar">ساره سالم الحليسي</span>
+                    <span class="lang-en hidden">Sarah Salem Alhulaysi</span>
+                </h1>
+
+                <p class="text-brand-800 dark:text-brand-200 text-base leading-relaxed text-justify">
+                    <span class="lang-ar">
+                        طالبة بكالوريوس في تخصص <strong>نظم معلومات الحاسوب الآلي</strong>، أمتلك اهتماماً مهنياً شاملاً بالبرمجة وتطوير الأنظمة، إدارة وتحليل قواعد البيانات، وإدارة المشاريع. أسعى إلى تطبيق المفاهيم الأكاديمية والمهارات التحليلية لتصميم حلول تقنية متكاملة تدعم التخطيط والتنفيذ الفعّال للمشاريع، مع ضمان كفاءة وسلامة البنى التحتية للبيانات.
+                    </span>
+                    <span class="lang-en hidden">
+                        Bachelor student in <strong>Computer Information Systems</strong> with a comprehensive interest in programming, database management & analysis, and project management. Seeking to apply academic knowledge and analytical skills to design technical solutions that support effective project execution and optimize database infrastructure.
+                    </span>
+                </p>
+
+                <!-- قسم التعليم -->
+                <div class="mt-6 p-6 bg-white/80 dark:bg-brand-900/40 rounded-2xl border border-brand-200 dark:border-brand-800 shadow-sm text-right">
+                    <div class="flex items-center space-x-3 space-x-reverse mb-3">
+                        <div class="p-3 bg-brand-200/60 dark:bg-brand-900 text-brand-800 dark:text-brand-200 rounded-xl">
+                            <i class="fa-solid fa-graduation-cap text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-brand-950 dark:text-brand-100">
+                                <span class="lang-ar">المؤهل الأكاديمي</span>
+                                <span class="lang-en hidden">Academic Education</span>
+                            </h3>
+                            <p class="text-brand-700 dark:text-brand-300 text-sm">
+                                <span class="lang-ar">جامعة الإمام محمد بن سعود الإسلامية</span>
+                                <span class="lang-en hidden">Imam Mohammad Ibn Saud Islamic University</span>
+                            </p>
+                        </div>
+                    </div>
+                    <p class="text-brand-800 dark:text-brand-200 text-sm leading-relaxed mt-2">
+                        <i class="fa-solid fa-check-circle text-brand-600 dark:text-brand-400 ml-1"></i> 
+                        <span class="lang-ar">تخصص: <strong>نظم معلومات الحاسوب الآلي (CIS)</strong></span>
+                        <span class="lang-en hidden">Major: <strong>Computer Information Systems (CIS)</strong></span>
+                    </p>
+                </div>
+
+                <div class="pt-2">
+                    <a href="#contact" class="px-6 py-3 bg-brand-600 hover:bg-brand-700 text-white font-medium rounded-xl shadow-lg shadow-brand-600/20 transition-all inline-block">
+                        <span class="lang-ar">تواصل معي</span>
+                        <span class="lang-en hidden">Contact Me</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- مربع التخصص: أيقونة قواعد البيانات والأنظمة الشفافة (بدون تكرار اللوجو) -->
+            <div class="flex justify-center">
+                <div class="relative w-72 h-72 sm:w-80 sm:h-80 rounded-3xl overflow-hidden shadow-xl bg-gradient-to-tr from-brand-700 to-brand-500 p-1.5">
+                    <div class="w-full h-full bg-white dark:bg-brand-950 rounded-2xl flex flex-col items-center justify-center text-brand-900 dark:text-brand-100 p-6 text-center">
+                        <i class="fa-solid fa-database text-6xl text-brand-600 dark:text-brand-400 mb-5"></i>
+                        <h4 class="font-bold text-base sm:text-lg text-brand-950 dark:text-brand-100">
+                            <span class="lang-ar">تحليل وتصميم الأنظمة وقواعد البيانات</span>
+                            <span class="lang-en hidden">Systems Analysis & Database Design</span>
+                        </h4>
+                        <p class="text-xs text-brand-700 dark:text-brand-300 mt-2">Computer Information Systems</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الصفحة الثانية: المهارات -->
+    <section id="skills" class="py-24 bg-brand-100/50 dark:bg-brand-900/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-brand-950 dark:text-white">
+                    <span class="lang-ar">المهارات والقدرات</span>
+                    <span class="lang-en hidden">Skills & Competencies</span>
+                </h2>
+                <div class="w-16 h-1 bg-brand-600 mx-auto mt-2 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="p-6 bg-white dark:bg-brand-900/40 rounded-2xl border border-brand-200 dark:border-brand-800 shadow-sm flex items-start space-x-4 space-x-reverse">
+                    <div class="p-3 bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-300 rounded-xl">
+                        <i class="fa-solid fa-brain text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-base text-brand-950 dark:text-brand-100">
+                            <span class="lang-ar">التحليل وحل المشكلات</span>
+                            <span class="lang-en hidden">Analytical & Problem-Solving</span>
+                        </h3>
+                        <p class="text-brand-700 dark:text-brand-300 text-xs mt-1">Strong analytical and problem-solving skills</p>
+                    </div>
+                </div>
+
+                <div class="p-6 bg-white dark:bg-brand-900/40 rounded-2xl border border-brand-200 dark:border-brand-800 shadow-sm flex items-start space-x-4 space-x-reverse">
+                    <div class="p-3 bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-300 rounded-xl">
+                        <i class="fa-solid fa-code text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-base text-brand-950 dark:text-brand-100">
+                            <span class="lang-ar">لغات البرمجة والتحليل</span>
+                            <span class="lang-en hidden">Programming Languages</span>
+                        </h3>
+                        <p class="text-brand-700 dark:text-brand-300 font-semibold text-xs mt-1">Java, C#, Python, Dart, HTML, Excel</p>
+                    </div>
+                </div>
+
+                <div class="p-6 bg-white dark:bg-brand-900/40 rounded-2xl border border-brand-200 dark:border-brand-800 shadow-sm flex items-start space-x-4 space-x-reverse">
+                    <div class="p-3 bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-300 rounded-xl">
+                        <i class="fa-solid fa-people-group text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-base text-brand-950 dark:text-brand-100">
+                            <span class="lang-ar">العمل الجماعي والتواصل</span>
+                            <span class="lang-en hidden">Teamwork & Communication</span>
+                        </h3>
+                        <p class="text-brand-700 dark:text-brand-300 text-xs mt-1">Excellent teamwork and communication skills</p>
+                    </div>
+                </div>
+
+                <div class="p-6 bg-white dark:bg-brand-900/40 rounded-2xl border border-brand-200 dark:border-brand-800 shadow-sm flex items-start space-x-4 space-x-reverse">
+                    <div class="p-3 bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-300 rounded-xl">
+                        <i class="fa-solid fa-diagram-project text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-base text-brand-950 dark:text-brand-100">
+                            <span class="lang-ar">تحليل الأنظمة وتصميم قواعد البيانات</span>
+                            <span class="lang-en hidden">Systems Analysis & Database Design</span>
+                        </h3>
+                        <p class="text-brand-700 dark:text-brand-300 text-xs mt-1">Knowledge of systems analysis and database design</p>
+                    </div>
+                </div>
+
+                <div class="p-6 bg-white dark:bg-brand-900/40 rounded-2xl border border-brand-200 dark:border-brand-800 shadow-sm flex items-start space-x-4 space-x-reverse">
+                    <div class="p-3 bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-300 rounded-xl">
+                        <i class="fa-solid fa-clock text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-base text-brand-950 dark:text-brand-100">
+                            <span class="lang-ar">إدارة الوقت بفاعلية</span>
+                            <span class="lang-en hidden">Effective Time Management</span>
+                        </h3>
+                        <p class="text-brand-700 dark:text-brand-300 text-xs mt-1">Effective time management</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الصفحة الثالثة: الخبرات والمشاريع -->
+    <section id="experiences" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-brand-950 dark:text-white">
+                    <span class="lang-ar">الخبرات والمشاريع</span>
+                    <span class="lang-en hidden">Experiences & Projects</span>
+                </h2>
+                <div class="w-16 h-1 bg-brand-600 mx-auto mt-2 rounded-full"></div>
+            </div>
+
+            <!-- المشاريع الأكاديمية -->
+            <div class="mb-16">
+                <div class="flex items-center space-x-3 space-x-reverse mb-8">
+                    <i class="fa-solid fa-laptop-code text-2xl text-brand-600 dark:text-brand-400"></i>
+                    <h3 class="text-2xl font-bold text-brand-950 dark:text-white">
+                        <span class="lang-ar">1. المشاريع الأكاديمية</span>
+                        <span class="lang-en hidden">1. Academic Projects</span>
+                    </h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white dark:bg-brand-900/40 p-6 rounded-2xl border border-brand-200 dark:border-brand-800 shadow-sm space-y-4">
+                        <span class="px-3 py-1 bg-brand-100 dark:bg-brand-900 text-brand-800 dark:text-brand-200 text-xs font-semibold rounded-full">قواعد البيانات</span>
+                        <h4 class="text-xl font-bold text-brand-950 dark:text-brand-100">نظام إدارة المهام الذكي (Intelligent Task Management)</h4>
+                        <p class="text-brand-800 dark:text-brand-300 text-sm leading-relaxed">
+                            تصميم وبناء نظام قواعد بيانات متكامل لإدارة المهام الفردية والجماعية، مع توثيق مخططات EER والتطبيع واستعلامات SQL متتقدمة.
+                        </p>
+                        <button onclick="openViewer('files/task_management.pdf', 'pdf')" class="inline-flex items-center space-x-2 space-x-reverse px-4 py-2 bg-brand-100 dark:bg-brand-900 hover:bg-brand-600 hover:text-white text-brand-800 dark:text-brand-200 rounded-lg text-sm transition-colors">
+                            <i class="fa-solid fa-eye"></i>
+                            <span>معاينة العرض التقديمي (PDF)</span>
+                        </button>
+                    </div>
+
+                    <div class="bg-white dark:bg-brand-900/40 p-6 rounded-2xl border border-brand-200 dark:border-brand-800 shadow-sm space-y-4">
+                        <span class="px-3 py-1 bg-brand-100 dark:bg-brand-900 text-brand-800 dark:text-brand-200 text-xs font-semibold rounded-full">معمارية الأنظمة المؤسسية</span>
+                        <h4 class="text-xl font-bold text-brand-950 dark:text-brand-100">إصدار رخص القيادة - منصة أبشر</h4>
+                        <p class="text-brand-800 dark:text-brand-300 text-sm leading-relaxed">
+                            دراسة معمارية لإطار عمل TOGAF لتطوير خدمات منصة أبشر، وتحليل الوضع الحالي والمستقبلي (As-Is & To-Be) وتحليل الفجوات.
+                        </p>
+                        <button onclick="openViewer('files/absher_project.pdf', 'pdf')" class="inline-flex items-center space-x-2 space-x-reverse px-4 py-2 bg-brand-100 dark:bg-brand-900 hover:bg-brand-600 hover:text-white text-brand-800 dark:text-brand-200 rounded-lg text-sm transition-colors">
+                            <i class="fa-solid fa-eye"></i>
+                            <span>معاينة دراسة المشروع (PDF)</span>
+                        </button>
+                    </div>
+
+                    <div class="bg-white dark:bg-brand-900/40 p-6 rounded-2xl border border-brand-200 dark:border-brand-800 shadow-sm space-y-4">
+                        <span class="px-3 py-1 bg-brand-100 dark:bg-brand-900 text-brand-800 dark:text-brand-200 text-xs font-semibold rounded-full">حلول تقنية ورقمية</span>
+                        <h4 class="text-xl font-bold text-brand-950 dark:text-brand-100">تدريب الواقع الافتراضي Synapse-VR (STC)</h4>
+                        <p class="text-brand-800 dark:text-brand-300 text-sm leading-relaxed">
+                            مقترح محاكاة تفاعلية بالواقع الافتراضي (VR) لتطوير مهارات موظفي خدمة العملاء بشركة STC وتحليل أدائهم بذكاء.
+                        </p>
+                        <button onclick="openViewer('files/synapse_vr.pdf', 'pdf')" class="inline-flex items-center space-x-2 space-x-reverse px-4 py-2 bg-brand-100 dark:bg-brand-900 hover:bg-brand-600 hover:text-white text-brand-800 dark:text-brand-200 rounded-lg text-sm transition-colors">
+                            <i class="fa-solid fa-eye"></i>
+                            <span>معاينة المقترح التكتيكي (PDF)</span>
+                        </button>
+                    </div>
+
+                    <div class="bg-white dark:bg-brand-900/40 p-6 rounded-2xl border border-brand-200 dark:border-brand-800 shadow-sm space-y-4">
+                        <span class="px-3 py-1 bg-brand-100 dark:bg-brand-900 text-brand-800 dark:text-brand-200 text-xs font-semibold rounded-full">تحليل الأنظمة الصحية</span>
+                        <h4 class="text-xl font-bold text-brand-950 dark:text-brand-100">دراسة أنظمة مدينة الملك فهد الطبية (KFMC)</h4>
+                        <p class="text-brand-800 dark:text-brand-300 text-sm leading-relaxed">
+                            دراسة ميدانية وتحليلية لتقييم أنظمة إدارة بيانات المرضى والسجلات الإلكترونية وحل مشاكل الربط التقني بالمدينة الطبية.
+                        </p>
+                        <button onclick="openViewer('files/kfmc_project.pdf', 'pdf')" class="inline-flex items-center space-x-2 space-x-reverse px-4 py-2 bg-brand-100 dark:bg-brand-900 hover:bg-brand-600 hover:text-white text-brand-800 dark:text-brand-200 rounded-lg text-sm transition-colors">
+                            <i class="fa-solid fa-eye"></i>
+                            <span>معاينة التقرير الطبي التقني (PDF)</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الخبرات التطوعية -->
+            <div>
+                <div class="flex items-center space-x-3 space-x-reverse mb-8">
+                    <i class="fa-solid fa-hand-holding-heart text-2xl text-brand-600 dark:text-brand-400"></i>
+                    <h3 class="text-2xl font-bold text-brand-950 dark:text-white">
+                        <span class="lang-ar">2. الخبرات التطوعية</span>
+                        <span class="lang-en hidden">2. Volunteer Experiences</span>
+                    </h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white dark:bg-brand-900/40 p-6 rounded-2xl border border-brand-200 dark:border-brand-800 shadow-sm space-y-3">
+                        <span class="px-3 py-1 bg-brand-100 dark:bg-brand-900 text-brand-800 dark:text-brand-200 text-xs font-semibold rounded-full">عضوية طلابية</span>
+                        <h4 class="font-bold text-base text-brand-950 dark:text-brand-100">مجتمع OSS VISION</h4>
+                        <p class="text-brand-700 dark:text-brand-300 text-xs">عضو فاعل ومتميز في مبادرة تقدم الأعضاء بجامعة الإمام.</p>
+                        <button onclick="openViewer('files/vol_oss.pdf', 'pdf')" class="text-xs text-brand-700 dark:text-brand-300 font-semibold hover:underline block pt-1">
+                            معاينة شهادة العضوية <i class="fa-solid fa-chevron-left text-[10px]"></i>
+                        </button>
+                    </div>
+
+                    <div class="bg-white dark:bg-brand-900/40 p-6 rounded-2xl border border-brand-200 dark:border-brand-800 shadow-sm space-y-3">
+                        <span class="px-3 py-1 bg-brand-100 dark:bg-brand-900 text-brand-800 dark:text-brand-200 text-xs font-semibold rounded-full">37 ساعة تطوعية</span>
+                        <h4 class="font-bold text-base text-brand-950 dark:text-brand-100">حملة خطى - جمعية كسوة فرح</h4>
+                        <p class="text-brand-700 dark:text-brand-300 text-xs">مشاركة ميدانية فعالة في تنفيذ وشغل الأعمال اللوجستية للحملة.</p>
+                        <button onclick="openViewer('files/vol_khota.pdf', 'pdf')" class="text-xs text-brand-700 dark:text-brand-300 font-semibold hover:underline block pt-1">
+                            معاينة شهادة الشكر <i class="fa-solid fa-chevron-left text-[10px]"></i>
+                        </button>
+                    </div>
+
+                    <div class="bg-white dark:bg-brand-900/40 p-6 rounded-2xl border border-brand-200 dark:border-brand-800 shadow-sm space-y-3">
+                        <span class="px-3 py-1 bg-brand-100 dark:bg-brand-900 text-brand-800 dark:text-brand-200 text-xs font-semibold rounded-full">15 ساعة تطوعية</span>
+                        <h4 class="font-bold text-base text-brand-950 dark:text-brand-100">مدير جودة وتطوير (حملة دفء)</h4>
+                        <p class="text-brand-700 dark:text-brand-300 text-xs">تنفيذ وإدارة معايير الجودة والتطوير عبر المنصة الوطنية للعمل التطوعي.</p>
+                        <button onclick="openViewer('files/vol_quality.pdf', 'pdf')" class="text-xs text-brand-700 dark:text-brand-300 font-semibold hover:underline block pt-1">
+                            معاينة الشهادة الوطنية <i class="fa-solid fa-chevron-left text-[10px]"></i>
+                        </button>
+                    </div>
+
+                    <div class="bg-white dark:bg-brand-900/40 p-6 rounded-2xl border border-brand-200 dark:border-brand-800 shadow-sm space-y-3">
+                        <span class="px-3 py-1 bg-brand-100 dark:bg-brand-900 text-brand-800 dark:text-brand-200 text-xs font-semibold rounded-full">65 ساعة تطوعية</span>
+                        <h4 class="font-bold text-base text-brand-950 dark:text-brand-100">فرز وتصنيف كسوة الشتاء</h4>
+                        <p class="text-brand-700 dark:text-brand-300 text-xs">المشاركة في النسخة التاسعة لجمعية كسوة فرح بالمنصة الوطنية.</p>
+                        <button onclick="openViewer('files/vol_sorting.pdf', 'pdf')" class="text-xs text-brand-700 dark:text-brand-300 font-semibold hover:underline block pt-1">
+                            معاينة الشهادة الوطنية <i class="fa-solid fa-chevron-left text-[10px]"></i>
+                        </button>
+                    </div>
+
+                    <div class="bg-white dark:bg-brand-900/40 p-6 rounded-2xl border border-brand-200 dark:border-brand-800 shadow-sm space-y-3">
+                        <span class="px-3 py-1 bg-brand-100 dark:bg-brand-900 text-brand-800 dark:text-brand-200 text-xs font-semibold rounded-full">29 ساعة تطوعية</span>
+                        <h4 class="font-bold text-base text-brand-950 dark:text-brand-100">مبادرة "نفهمه صح"</h4>
+                        <p class="text-brand-700 dark:text-brand-300 text-xs">تفعيل مبادرة توعوية لتعزيز مفهوم التطوع مع مؤسسة احتواء.</p>
+                        <button onclick="openViewer('files/vol_ehtwaa.pdf', 'pdf')" class="text-xs text-brand-700 dark:text-brand-300 font-semibold hover:underline block pt-1">
+                            معاينة شهادة التطوع <i class="fa-solid fa-chevron-left text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الصفحة الرابعة: الشهادات -->
+    <section id="certificates" class="py-24 bg-brand-100/50 dark:bg-brand-900/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-brand-950 dark:text-white">
+                    <span class="lang-ar">الشهادات والدورات</span>
+                    <span class="lang-en hidden">Certificates & Courses</span>
+                </h2>
+                <div class="w-16 h-1 bg-brand-600 mx-auto mt-2 rounded-full"></div>
+            </div>
+
+            <!-- الشهادات الاحترافية -->
+            <div class="mb-12">
+                <h3 class="text-xl font-bold text-brand-800 dark:text-brand-300 mb-6 flex items-center space-x-2 space-x-reverse">
+                    <i class="fa-solid fa-star"></i>
+                    <span>
+                        <span class="lang-ar">الشهادات الاحترافية</span>
+                        <span class="lang-en hidden">Professional Certifications</span>
+                    </span>
+                </h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white dark:bg-brand-900/40 p-6 rounded-2xl border-2 border-brand-600/30 dark:border-brand-500/20 shadow-sm flex items-center justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-brand-700 dark:text-brand-300 block mb-1">الأكاديمية السعودية الرقمية & AWS</span>
+                            <h4 class="font-bold text-lg text-brand-950 dark:text-brand-100">AWS Certified AI Practitioner</h4>
+                            <p class="text-xs text-brand-700 dark:text-brand-300 mt-1">تغطي الذكاء الاصطناعي التوليدي، تعلم الآلة، وخدمات AWS</p>
+                        </div>
+                        <button onclick="openViewer('files/cert_aws_ai.pdf', 'pdf')" class="p-3 bg-brand-100 dark:bg-brand-900 text-brand-800 dark:text-brand-200 rounded-xl hover:bg-brand-600 hover:text-white transition-colors">
+                            <i class="fa-solid fa-eye text-lg"></i>
+                        </button>
+                    </div>
+
+                    <div class="bg-white dark:bg-brand-900/40 p-6 rounded-2xl border-2 border-brand-600/30 dark:border-brand-500/20 shadow-sm flex items-center justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-brand-700 dark:text-brand-300 block mb-1">مؤسسة مسك & STC</span>
+                            <h4 class="font-bold text-lg text-brand-950 dark:text-brand-100">تحليل البيانات (Data Analytics Virtual Experience)</h4>
+                            <p class="text-xs text-brand-700 dark:text-brand-300 mt-1">تتضمن خوارزميات تعلم الآلة، والتنبؤ بسلوك المستخدم وعرض البيانات</p>
+                        </div>
+                        <button onclick="openViewer('files/cert_misk_stc.pdf', 'pdf')" class="p-3 bg-brand-100 dark:bg-brand-900 text-brand-800 dark:text-brand-200 rounded-xl hover:bg-brand-600 hover:text-white transition-colors">
+                            <i class="fa-solid fa-eye text-lg"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الشهادات والدورات العامة -->
+            <div>
+                <h3 class="text-xl font-bold text-brand-900 dark:text-brand-200 mb-6 flex items-center space-x-2 space-x-reverse">
+                    <i class="fa-solid fa-certificate"></i>
+                    <span>
+                        <span class="lang-ar">الشهادات والدورات التدريبية</span>
+                        <span class="lang-en hidden">Training Courses & Appreciation</span>
+                    </span>
+                </h3>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    <!-- ملف الهاكاثون -->
+                    <div class="bg-white dark:bg-brand-900/40 p-6 rounded-2xl border-2 border-brand-600/40 dark:border-brand-500/30 shadow-sm space-y-3">
+                        <i class="fa-solid fa-trophy text-2xl text-amber-500"></i>
+                        <h4 class="font-bold text-base text-brand-950 dark:text-brand-100">هاكاثون المصرفية المفتوحة (أثر)</h4>
+                        <p class="text-brand-700 dark:text-brand-300 text-xs">مشاركة مع أكاديمية طويق وبنك الإنماء لابتكار تطبيق مالي ذكي[cite: 5, 8].</p>
+                        <button onclick="openViewer('files/hackathar.pdf', 'pdf')" class="text-xs text-brand-700 dark:text-brand-300 font-semibold hover:underline block pt-1">
+                            معاينة ملف الهاكاثون <i class="fa-solid fa-chevron-left text-[10px]"></i>
+                        </button>
+                    </div>
+
+                    <div class="bg-white dark:bg-brand-900/40 p-6 rounded-2xl border border-brand-200 dark:border-brand-800 shadow-sm space-y-3">
+                        <i class="fa-solid fa-award text-2xl text-amber-500"></i>
+                        <h4 class="font-bold text-base text-brand-950 dark:text-brand-100">سفيرة التعاون الأكاديمي</h4>
+                        <p class="text-brand-700 dark:text-brand-300 text-xs">شهادة شكر من جامعة الإمام لتقديم جلسة تعليمية في أساسيات قواعد البيانات.</p>
+                        <button onclick="openViewer('files/cert_ambassador.pdf', 'pdf')" class="text-xs text-brand-700 dark:text-brand-300 font-semibold hover:underline block pt-1">
+                            معاينة الشهادة <i class="fa-solid fa-chevron-left text-[10px]"></i>
+                        </button>
+                    </div>
+
+                    <div class="bg-white dark:bg-brand-900/40 p-6 rounded-2xl border border-brand-200 dark:border-brand-800 shadow-sm space-y-3">
+                        <i class="fa-solid fa-chart-line text-2xl text-brand-600"></i>
+                        <h4 class="font-bold text-base text-brand-950 dark:text-brand-100">بناء لوحات التحكم بـ Excel</h4>
+                        <p class="text-brand-700 dark:text-brand-300 text-xs">شهادة إتمام دورة بناء لوحات التحكم والتفاعل (Dashboards) من منصة إدراك.</p>
+                        <button onclick="openViewer('files/cert_excel.pdf', 'pdf')" class="text-xs text-brand-700 dark:text-brand-300 font-semibold hover:underline block pt-1">
+                            معاينة الشهادة <i class="fa-solid fa-chevron-left text-[10px]"></i>
+                        </button>
+                    </div>
+
+                    <div class="bg-white dark:bg-brand-900/40 p-6 rounded-2xl border border-brand-200 dark:border-brand-800 shadow-sm space-y-3">
+                        <i class="fa-solid fa-pen-ruler text-2xl text-brand-600"></i>
+                        <h4 class="font-bold text-base text-brand-950 dark:text-brand-100">مشروع تطبيقي في UX/UI</h4>
+                        <p class="text-brand-700 dark:text-brand-300 text-xs">شهادة إتمام مشروع تصميم وتطوير واجهات المستخدم من منصة سطر (أكاديمية طويق).</p>
+                        <button onclick="openViewer('files/cert_uxui.jpg', 'image')" class="text-xs text-brand-700 dark:text-brand-300 font-semibold hover:underline block pt-1">
+                            معاينة الشهادة <i class="fa-solid fa-chevron-left text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الصفحة الخامسة: معلومات التواصل -->
+    <section id="contact" class="py-24">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-brand-950 dark:text-white">
+                    <span class="lang-ar">معلومات التواصل</span>
+                    <span class="lang-en hidden">Contact Information</span>
+                </h2>
+                <div class="w-16 h-1 bg-brand-600 mx-auto mt-2 rounded-full"></div>
+            </div>
+
+            <!-- بطاقات التواصل المباشر -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
+                <div class="p-6 bg-white dark:bg-brand-900/40 rounded-2xl border border-brand-200 dark:border-brand-800 text-center space-y-3 shadow-sm">
+                    <div class="w-12 h-12 bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-300 rounded-full flex items-center justify-center mx-auto text-xl">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <h3 class="font-bold text-sm text-brand-950 dark:text-brand-100">
+                        <span class="lang-ar">رقم التواصل</span>
+                        <span class="lang-en hidden">Phone</span>
+                    </h3>
+                    <p class="text-brand-800 dark:text-brand-200 text-sm font-semibold dir-ltr" dir="ltr">0501716378</p>
+                </div>
+
+                <div class="p-6 bg-white dark:bg-brand-900/40 rounded-2xl border border-brand-200 dark:border-brand-800 text-center space-y-3 shadow-sm">
+                    <div class="w-12 h-12 bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-300 rounded-full flex items-center justify-center mx-auto text-xl">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <h3 class="font-bold text-sm text-brand-950 dark:text-brand-100">
+                        <span class="lang-ar">البريد الإلكتروني</span>
+                        <span class="lang-en hidden">Email</span>
+                    </h3>
+                    <a href="mailto:sarahsslim74@gmail.com" class="text-brand-700 dark:text-brand-300 text-xs font-semibold hover:underline block break-all">sarahsslim74@gmail.com</a>
+                </div>
+
+                <div class="p-6 bg-white dark:bg-brand-900/40 rounded-2xl border border-brand-200 dark:border-brand-800 text-center space-y-3 shadow-sm">
+                    <div class="w-12 h-12 bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-300 rounded-full flex items-center justify-center mx-auto text-xl">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <h3 class="font-bold text-sm text-brand-950 dark:text-brand-100">
+                        <span class="lang-ar">الموقع</span>
+                        <span class="lang-en hidden">Location</span>
+                    </h3>
+                    <p class="text-brand-800 dark:text-brand-200 text-sm font-semibold">
+                        <span class="lang-ar">المملكة العربية السعودية، الرياض</span>
+                        <span class="lang-en hidden">Riyadh, Saudi Arabia</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- نموذج تواصل سريع -->
+            <form id="contact-form" action="https://formspree.io/f/mrpearly" method="POST" class="space-y-6 bg-white dark:bg-brand-900/40 p-8 rounded-3xl border border-brand-200 dark:border-brand-800 shadow-sm relative">
+                <h3 class="font-bold text-xl mb-4 text-center text-brand-950 dark:text-brand-100">
+                    <span class="lang-ar">إرسال رسالة مباشرة</span>
+                    <span class="lang-en hidden">Send Message</span>
+                </h3>
+                
+                <!-- رسالة النجاح الفورية -->
+                <div id="form-success-msg" class="hidden p-4 mb-4 text-sm text-emerald-800 rounded-xl bg-emerald-100 dark:bg-emerald-950/60 dark:text-emerald-300 font-medium text-center transition-all">
+                    <i class="fa-solid fa-check-circle ml-2"></i> 
+                    <span class="lang-ar">تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.</span>
+                    <span class="lang-en hidden">Your message has been sent successfully!</span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-2 text-brand-900 dark:text-brand-200">
+                            <span class="lang-ar">الاسم <span class="text-red-500">*</span></span>
+                            <span class="lang-en hidden">Name <span class="text-red-500">*</span></span>
+                        </label>
+                        <input type="text" name="name" required class="w-full px-4 py-3 bg-brand-50/50 dark:bg-brand-950 border border-brand-200 dark:border-brand-800 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-600 text-brand-950 dark:text-brand-100">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2 text-brand-900 dark:text-brand-200">
+                            <span class="lang-ar">البريد الإلكتروني <span class="text-red-500">*</span></span>
+                            <span class="lang-en hidden">Email <span class="text-red-500">*</span></span>
+                        </label>
+                        <input type="email" name="email" required class="w-full px-4 py-3 bg-brand-50/50 dark:bg-brand-950 border border-brand-200 dark:border-brand-800 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-600 text-brand-950 dark:text-brand-100">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-2 text-brand-900 dark:text-brand-200">
+                        <span class="lang-ar">الرسالة <span class="text-red-500">*</span></span>
+                        <span class="lang-en hidden">Message <span class="text-red-500">*</span></span>
+                    </label>
+                    <textarea name="message" rows="4" required class="w-full px-4 py-3 bg-brand-50/50 dark:bg-brand-950 border border-brand-200 dark:border-brand-800 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-600 text-brand-950 dark:text-brand-100"></textarea>
+                </div>
+                <button type="submit" id="submit-btn" class="w-full py-4 bg-brand-600 hover:bg-brand-700 text-white font-medium rounded-xl shadow-lg shadow-brand-600/20 transition-all">
+                    <span class="lang-ar">إرسال الرسالة</span>
+                    <span class="lang-en hidden">Send Message</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-brand-100/70 dark:bg-brand-950 border-t border-brand-200 dark:border-brand-900 text-center text-sm text-brand-700 dark:text-brand-300">
+        <p>© 2026 
+            <span class="lang-ar">ساره سالم الحليسي. جميع الحقوق محفوظة.</span>
+            <span class="lang-en hidden">Sarah Salem Alhulaysi. All rights reserved.</span>
+        </p>
+    </footer>
+
+    <!-- النافذة المنبثقة لعرض الملفات والصور (Modal Viewer) -->
+    <div id="file-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="relative w-full max-w-4xl bg-white dark:bg-brand-900 rounded-3xl overflow-hidden shadow-2xl border border-brand-200 dark:border-brand-800 max-h-[90vh] flex flex-col">
+            <div class="flex items-center justify-between px-6 py-4 border-b border-brand-200 dark:border-brand-800">
+                <h3 class="font-bold text-lg text-brand-950 dark:text-brand-100">
+                    <span class="lang-ar">معاينة المستند</span>
+                    <span class="lang-en hidden">Document Preview</span>
+                </h3>
+                <button onclick="closeViewer()" class="p-2 text-brand-700 dark:text-brand-300 hover:text-brand-900 text-xl font-bold">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="p-4 flex-1 overflow-auto flex justify-center items-center bg-brand-50 dark:bg-brand-950 min-h-[400px]">
+                <iframe id="modal-iframe" class="w-full h-[70vh] rounded-xl hidden" src="" frameborder="0"></iframe>
+                <img id="modal-img" class="max-w-full max-h-[70vh] rounded-xl shadow-md hidden" src="" alt="Preview">
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const htmlElement = document.documentElement;
+
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            htmlElement.classList.add('dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            if (htmlElement.classList.contains('dark')) {
+                htmlElement.classList.remove('dark');
+                localStorage.theme = 'light';
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            } else {
+                htmlElement.classList.add('dark');
+                localStorage.theme = 'dark';
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            }
+        });
+
+        // Language Switcher Toggle
+        const langToggle = document.getElementById('lang-toggle');
+        let currentLang = 'ar';
+
+        function setLanguage(lang) {
+            const arElements = document.querySelectorAll('.lang-ar');
+            const enElements = document.querySelectorAll('.lang-en');
+
+            if (lang === 'en') {
+                currentLang = 'en';
+                langToggle.innerText = 'AR';
+                htmlElement.setAttribute('dir', 'ltr');
+                htmlElement.setAttribute('lang', 'en');
+                arElements.forEach(el => el.classList.add('hidden'));
+                enElements.forEach(el => el.classList.remove('hidden'));
+            } else {
+                currentLang = 'ar';
+                langToggle.innerText = 'EN';
+                htmlElement.setAttribute('dir', 'rtl');
+                htmlElement.setAttribute('lang', 'ar');
+                enElements.forEach(el => el.classList.add('hidden'));
+                arElements.forEach(el => el.classList.remove('hidden'));
+            }
+        }
+
+        langToggle.addEventListener('click', () => {
+            setLanguage(currentLang === 'ar' ? 'en' : 'ar');
+        });
+
+        // AJAX Form Submission
+        const contactForm = document.getElementById('contact-form');
+        const successMsg = document.getElementById('form-success-msg');
+
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const formData = new FormData(contactForm);
+            
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    successMsg.classList.remove('hidden');
+                    contactForm.reset();
+                    setTimeout(() => {
+                        successMsg.classList.add('hidden');
+                    }, 6000);
+                } else {
+                    alert('حدث خطأ أثناء إرسال الرسالة، يجدر المحاولة لاحقاً.');
+                }
+            } catch (error) {
+                alert('تعذر الاتصال بالخادم، تأكد من اتصالك بالإنترنت.');
+            }
+        });
+
+        // Modal Viewer Functionality
+        const fileModal = document.getElementById('file-modal');
+        const modalIframe = document.getElementById('modal-iframe');
+        const modalImg = document.getElementById('modal-img');
+
+        function openViewer(fileUrl, type) {
+            modalIframe.classList.add('hidden');
+            modalImg.classList.add('hidden');
+
+            if (type === 'pdf') {
+                modalIframe.src = fileUrl;
+                modalIframe.classList.remove('hidden');
+            } else if (type === 'image') {
+                modalImg.src = fileUrl;
+                modalImg.classList.remove('hidden');
+            }
+
+            fileModal.classList.remove('hidden');
+        }
+
+        function closeViewer() {
+            fileModal.classList.add('hidden');
+            modalIframe.src = '';
+            modalImg.src = '';
+        }
+
+        fileModal.addEventListener('click', (e) => {
+            if (e.target === fileModal) {
+                closeViewer();
+            }
+        });
+    </script>
+</body>
+</html>
